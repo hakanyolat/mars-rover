@@ -1,0 +1,1253 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Mars Rover API",
+        "version": "2.0"
+    },
+    "paths": {
+        "/api/v2/rovers": {
+            "get": {
+                "tags": [
+                    "rover"
+                ],
+                "operationId": "f7ee4daf0ca00fcc3eddb044f9c78ba4",
+                "responses": {
+                    "200": {
+                        "description": "Returns all rovers",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "description": "The rover id",
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "created_at": {
+                                                "description": "Created at",
+                                                "type": "string",
+                                                "example": "2021-08-26T18:41:26.000000Z"
+                                            },
+                                            "updated_at": {
+                                                "description": "Updated at",
+                                                "type": "string",
+                                                "example": "2021-08-26T18:41:26.000000Z"
+                                            },
+                                            "x": {
+                                                "description": "Rover x coordinate",
+                                                "type": "integer",
+                                                "example": "50"
+                                            },
+                                            "y": {
+                                                "description": "Rover y coordinate",
+                                                "type": "integer",
+                                                "example": "50"
+                                            },
+                                            "plateau_id": {
+                                                "description": "Plateau id's of rover",
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "direction": {
+                                                "description": "Rover direction",
+                                                "type": "string",
+                                                "example": "N"
+                                            },
+                                            "state": {
+                                                "description": "Rover state",
+                                                "type": "string",
+                                                "example": "READY"
+                                            },
+                                            "queue": {
+                                                "description": "Rover command queue",
+                                                "type": "string",
+                                                "example": "RLM"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Returns error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "rover"
+                ],
+                "operationId": "b26d2b4f637f8bed67172679bd214ad3",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "x": {
+                                        "description": "The x coordinate of the rover",
+                                        "type": "integer",
+                                        "example": "50"
+                                    },
+                                    "y": {
+                                        "description": "The y coordinate of the rover",
+                                        "type": "integer",
+                                        "example": "50"
+                                    },
+                                    "plateau_id": {
+                                        "description": "The plateau_id of the rover",
+                                        "type": "integer",
+                                        "example": "50"
+                                    },
+                                    "direction": {
+                                        "description": "The direction of the rover",
+                                        "type": "string",
+                                        "example": "N"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Returns rover",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "The rover id",
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "created_at": {
+                                            "description": "Created at",
+                                            "type": "string",
+                                            "example": "2021-08-26T18:41:26.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "description": "Updated at",
+                                            "type": "string",
+                                            "example": "2021-08-26T18:41:26.000000Z"
+                                        },
+                                        "x": {
+                                            "description": "Rover x coordinate",
+                                            "type": "integer",
+                                            "example": "50"
+                                        },
+                                        "y": {
+                                            "description": "Rover y coordinate",
+                                            "type": "integer",
+                                            "example": "50"
+                                        },
+                                        "plateau_id": {
+                                            "description": "Plateau id's of rover",
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "direction": {
+                                            "description": "Rover direction",
+                                            "type": "string",
+                                            "example": "N"
+                                        },
+                                        "state": {
+                                            "description": "Rover state",
+                                            "type": "string",
+                                            "example": "READY"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request body",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Returns error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/rovers/{id}": {
+            "get": {
+                "tags": [
+                    "rover"
+                ],
+                "operationId": "00159f2dbb4c6902a73f794b0a5b5ded",
+                "responses": {
+                    "200": {
+                        "description": "Returns rover",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "The rover id",
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "created_at": {
+                                            "description": "Created at",
+                                            "type": "string",
+                                            "example": "2021-08-26T18:41:26.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "description": "Updated at",
+                                            "type": "string",
+                                            "example": "2021-08-26T18:41:26.000000Z"
+                                        },
+                                        "x": {
+                                            "description": "Rover x coordinate",
+                                            "type": "integer",
+                                            "example": "50"
+                                        },
+                                        "y": {
+                                            "description": "Rover y coordinate",
+                                            "type": "integer",
+                                            "example": "50"
+                                        },
+                                        "plateau_id": {
+                                            "description": "Plateau id's of rover",
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "direction": {
+                                            "description": "Rover direction",
+                                            "type": "string",
+                                            "example": "N"
+                                        },
+                                        "state": {
+                                            "description": "Rover state",
+                                            "type": "string",
+                                            "example": "READY"
+                                        },
+                                        "queue": {
+                                            "description": "Rover command queue",
+                                            "type": "string",
+                                            "example": "RLM"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Returns error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "rover"
+                ],
+                "operationId": "3b456c53a6434c48f79870d59ce189a8",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "x": {
+                                        "description": "The x coordinate of the rover",
+                                        "type": "integer",
+                                        "example": "50"
+                                    },
+                                    "y": {
+                                        "description": "The y coordinate of the rover",
+                                        "type": "integer",
+                                        "example": "50"
+                                    },
+                                    "plateau_id": {
+                                        "description": "The plateau_id of the rover",
+                                        "type": "integer",
+                                        "example": "50"
+                                    },
+                                    "direction": {
+                                        "description": "The direction of the rover",
+                                        "type": "string",
+                                        "example": "N"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Returns rover",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "The rover id",
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "created_at": {
+                                            "description": "Created at",
+                                            "type": "string",
+                                            "example": "2021-08-26T18:41:26.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "description": "Updated at",
+                                            "type": "string",
+                                            "example": "2021-08-26T18:41:26.000000Z"
+                                        },
+                                        "x": {
+                                            "description": "Rover x coordinate",
+                                            "type": "integer",
+                                            "example": "50"
+                                        },
+                                        "y": {
+                                            "description": "Rover y coordinate",
+                                            "type": "integer",
+                                            "example": "50"
+                                        },
+                                        "plateau_id": {
+                                            "description": "Plateau id's of rover",
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "direction": {
+                                            "description": "Rover direction",
+                                            "type": "string",
+                                            "example": "N"
+                                        },
+                                        "state": {
+                                            "description": "Rover state",
+                                            "type": "string",
+                                            "example": "READY"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request body",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Returns error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "rover"
+                ],
+                "operationId": "eda22fc54bcebfa17d46afecccf7bd3d",
+                "responses": {
+                    "200": {
+                        "description": "Deletes resource",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "The result",
+                                            "type": "boolean",
+                                            "example": "true"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Returns error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/rovers/{id}/state": {
+            "get": {
+                "tags": [
+                    "rover"
+                ],
+                "operationId": "486a63ac7e268445a023c14926e71f49",
+                "responses": {
+                    "200": {
+                        "description": "Returns rover's state",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "state": {
+                                            "description": "Rover state",
+                                            "type": "string",
+                                            "example": "READY"
+                                        },
+                                        "queue": {
+                                            "description": "Rover command queue",
+                                            "type": "string",
+                                            "example": "RLM"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Returns error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/rovers/{id}/stop": {
+            "post": {
+                "tags": [
+                    "rover"
+                ],
+                "operationId": "4ced8a4b1c16a87cd55321ff149cb4c8",
+                "responses": {
+                    "200": {
+                        "description": "Stops all commands of rover in queue",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "The rover id",
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "created_at": {
+                                            "description": "Created at",
+                                            "type": "string",
+                                            "example": "2021-08-26T18:41:26.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "description": "Updated at",
+                                            "type": "string",
+                                            "example": "2021-08-26T18:41:26.000000Z"
+                                        },
+                                        "x": {
+                                            "description": "Rover x coordinate",
+                                            "type": "integer",
+                                            "example": "50"
+                                        },
+                                        "y": {
+                                            "description": "Rover y coordinate",
+                                            "type": "integer",
+                                            "example": "50"
+                                        },
+                                        "plateau_id": {
+                                            "description": "Plateau id's of rover",
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "direction": {
+                                            "description": "Rover direction",
+                                            "type": "string",
+                                            "example": "N"
+                                        },
+                                        "state": {
+                                            "description": "Rover state",
+                                            "type": "string",
+                                            "example": "READY"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Returns error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/rovers/{id}/execute": {
+            "post": {
+                "tags": [
+                    "rover"
+                ],
+                "operationId": "da4a9401a4353ac1d4bdfa41bcd560c6",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "commands": {
+                                        "description": "Commands to be executed",
+                                        "type": "string",
+                                        "example": "R+L-<M-+>"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Returns rover",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "The rover id",
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "created_at": {
+                                            "description": "Created at",
+                                            "type": "string",
+                                            "example": "2021-08-26T18:41:26.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "description": "Updated at",
+                                            "type": "string",
+                                            "example": "2021-08-26T18:41:26.000000Z"
+                                        },
+                                        "x": {
+                                            "description": "Rover x coordinate",
+                                            "type": "integer",
+                                            "example": "50"
+                                        },
+                                        "y": {
+                                            "description": "Rover y coordinate",
+                                            "type": "integer",
+                                            "example": "50"
+                                        },
+                                        "plateau_id": {
+                                            "description": "Plateau id's of rover",
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "direction": {
+                                            "description": "Rover direction",
+                                            "type": "string",
+                                            "example": "N"
+                                        },
+                                        "state": {
+                                            "description": "Rover state",
+                                            "type": "string",
+                                            "example": "READY"
+                                        },
+                                        "queue": {
+                                            "description": "Rover command queue",
+                                            "type": "string",
+                                            "example": "RLM"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request body",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Returns error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/plateaus": {
+            "get": {
+                "tags": [
+                    "plateau"
+                ],
+                "operationId": "5b85a65d5454abfd064cd87aed3d640c",
+                "responses": {
+                    "200": {
+                        "description": "Returns all plateaus",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "description": "The plateau id",
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "created_at": {
+                                                "description": "Created at",
+                                                "type": "string",
+                                                "example": "2021-08-26T18:41:26.000000Z"
+                                            },
+                                            "updated_at": {
+                                                "description": "Updated at",
+                                                "type": "string",
+                                                "example": "2021-08-26T18:41:26.000000Z"
+                                            },
+                                            "width": {
+                                                "description": "Plateau width",
+                                                "type": "integer",
+                                                "example": "50"
+                                            },
+                                            "height": {
+                                                "description": "Plateau height",
+                                                "type": "integer",
+                                                "example": "50"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Returns error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "plateau"
+                ],
+                "operationId": "0a11760645957a349fd44d8c27b42ec3",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "x": {
+                                        "description": "The plateau width",
+                                        "type": "integer",
+                                        "example": "50"
+                                    },
+                                    "y": {
+                                        "description": "The plateau height",
+                                        "type": "integer",
+                                        "example": "50"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Returns plateau",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "The plateau id",
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "created_at": {
+                                            "description": "Created at",
+                                            "type": "string",
+                                            "example": "2021-08-26T18:41:26.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "description": "Updated at",
+                                            "type": "string",
+                                            "example": "2021-08-26T18:41:26.000000Z"
+                                        },
+                                        "width": {
+                                            "description": "Plateau width",
+                                            "type": "integer",
+                                            "example": "50"
+                                        },
+                                        "height": {
+                                            "description": "Plateau height",
+                                            "type": "integer",
+                                            "example": "50"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request body",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Returns error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/plateaus/{id}": {
+            "get": {
+                "tags": [
+                    "plateau"
+                ],
+                "operationId": "7643ff417c225b076a9f25e6a92763cf",
+                "responses": {
+                    "200": {
+                        "description": "Returns plateau",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "The plateau id",
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "created_at": {
+                                            "description": "Created at",
+                                            "type": "string",
+                                            "example": "2021-08-26T18:41:26.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "description": "Updated at",
+                                            "type": "string",
+                                            "example": "2021-08-26T18:41:26.000000Z"
+                                        },
+                                        "width": {
+                                            "description": "Plateau width",
+                                            "type": "integer",
+                                            "example": "50"
+                                        },
+                                        "height": {
+                                            "description": "Plateau height",
+                                            "type": "integer",
+                                            "example": "50"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Returns error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "plateau"
+                ],
+                "operationId": "af3a54aaf43782cc6a8746088d7617a4",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "x": {
+                                        "description": "The plateau width",
+                                        "type": "integer",
+                                        "example": "50"
+                                    },
+                                    "y": {
+                                        "description": "The plateau height",
+                                        "type": "integer",
+                                        "example": "50"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Returns plateau",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "The plateau id",
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "created_at": {
+                                            "description": "Created at",
+                                            "type": "string",
+                                            "example": "2021-08-26T18:41:26.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "description": "Updated at",
+                                            "type": "string",
+                                            "example": "2021-08-26T18:41:26.000000Z"
+                                        },
+                                        "width": {
+                                            "description": "Plateau width",
+                                            "type": "integer",
+                                            "example": "50"
+                                        },
+                                        "height": {
+                                            "description": "Plateau height",
+                                            "type": "integer",
+                                            "example": "50"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request body",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Returns error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "plateau"
+                ],
+                "operationId": "b7044b1052fc8a62df6b71d87a9d4179",
+                "responses": {
+                    "200": {
+                        "description": "Deletes resource",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "description": "The result",
+                                            "type": "boolean",
+                                            "example": "true"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Returns error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "The error description",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
